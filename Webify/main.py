@@ -28,14 +28,31 @@ class Web_Folder:
             os.mkdir(self.dirpath)
 
     def index(self):
-        try:
-            with open(os.path.dirname(os.path.realpath(__file__)) + "\\index.txt", 'r') as index_string:
-                r = index_string.read()
+        html_text_file = os.path.dirname(os.path.realpath(__file__)) + "\\index.txt"
+        if os.path.isfile(html_text_file):
+            try:
+                with open(os.path.dirname(os.path.realpath(__file__)) + "\\index.txt", 'r') as index_string:
+                    r = index_string.read()
+                with open(self.inside_directory + "index.html", 'w') as html_file:
+                    html_file.write(r)
+            except:
+                print("Error Setting Up HTML Doc")
+                time.sleep(4)
+        else:
             with open(self.inside_directory + "index.html", 'w') as html_file:
-                html_file.write(r)
-        except:
-            print("Error Setting Up HTML Doc")
+                html_file.write(
+                    """
+                    <html>
+                    <body>
+                    
+                    </body>
+                    
+                    </html>
+                    """
+                )
+            print("Could not locate HTML text file to set up initial template")
             time.sleep(4)
+
 
     def style(self):
         if not os.path.exists(self.inside_directory + "style"):
