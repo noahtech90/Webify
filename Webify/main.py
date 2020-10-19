@@ -5,7 +5,7 @@ import time
 """
 Webify Program
 
-This script creates a folder directory for a new webiste to be stored on the desktop
+This script creates a folder directory for a new webiste to be stored in a Webify Folder
 
 This program also writes the initial connections between the javascript, html, and css files
 
