@@ -30,28 +30,23 @@ class Web_Folder:
     def index(self):
         html_text_file = os.path.dirname(os.path.realpath(__file__)) + "\\index.txt"
         if os.path.isfile(html_text_file):
-            try:
-                with open(os.path.dirname(os.path.realpath(__file__)) + "\\index.txt", 'r') as index_string:
-                    r = index_string.read()
-                with open(self.inside_directory + "index.html", 'w') as html_file:
-                    html_file.write(r)
-            except:
-                print("Error Setting Up HTML Doc")
-                time.sleep(4)
+            with open(os.path.dirname(os.path.realpath(__file__)) + "\\index.txt", 'r') as index_string:
+                r = index_string.read()
+            with open(self.inside_directory + "index.html", 'w') as html_file:
+                html_file.write(r)
         else:
             with open(self.inside_directory + "index.html", 'w') as html_file:
                 html_file.write(
                     """
-                    <html>
-                    <body>
+                <html>
+                    <link rel="stylesheet" href="style/style.css">
+                        <body>
                     
-                    </body>
-                    
-                    </html>
+                        </body>
+                    <script src= "js/main.js"></script>
+                </html>
                     """
                 )
-            print("Could not locate HTML text file to set up initial template")
-            time.sleep(4)
 
 
     def style(self):
